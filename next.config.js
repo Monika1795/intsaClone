@@ -9,6 +9,9 @@ const nextConfig = {
     register: true,
     skipWaiting: true,
   },
+  experimental: {
+    styledComponents: true
+  }
 }
 
 module.exports = withPWA(nextConfig)
