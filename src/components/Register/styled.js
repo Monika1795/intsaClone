@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -61,3 +62,11 @@ export const StyledLink = styled.a`
   color: blue;
   cursor: pointer;
 `;
+
+export const ImageWrap = styled.div`
+  position: relative;
+  width: 10%;
+  top: -38px;
+  left: 274px;
+`;
+export const StyledImage = styled(Image)``;

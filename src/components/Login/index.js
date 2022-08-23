@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { handleLoginValidation } from "../../util/validityMethods";
 import {
   Input,
@@ -12,7 +12,10 @@ import {
   SwitchRegisterOrLoginWrapper,
   Title,
   Wrapper,
+  ImageWrap,
+  StyledImage,
 } from "../Register/styled";
+import { ForgotPasswordLink } from "./styled";
 
 const InitialErrors = {
   email: "",
@@ -27,6 +30,7 @@ const InitialFieldValues = {
 const LoginPage = () => {
   const [errors, setErrors] = useState(InitialErrors);
   const [fields, setFields] = useState(InitialFieldValues);
+  const [isShow, setShow] = useState(false);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -64,17 +68,35 @@ const LoginPage = () => {
         <InputWrapper>
           <Input
             placeholder="password"
-            type="password"
+            type={!isShow ? "password" : "text"}
             value={fields.password}
             name="password"
             onChange={handleChange}
           />
+          <ImageWrap
+            onClick={() => {
+              setShow(!isShow);
+            }}
+          >
+            <StyledImage
+              src={!isShow ? "/images/eye.svg" : "/images/eye-slash.svg"}
+              alt=""
+              layout="fixed"
+              width={30}
+              height={30}
+              style={{}}
+            />
+          </ImageWrap>
+
           {errors.password && <Error>{errors.password}</Error>}
         </InputWrapper>
         <SubmitButton type="button" onClick={handleSubmit}>
-          {" "}
-          Log In{" "}
+          Log In
         </SubmitButton>
+        <ForgotPasswordLink href="/forgot_password">
+          {" "}
+          Forgotten your password?
+        </ForgotPasswordLink>
       </RegisterOrLoginWrapper>
       <SwitchRegisterOrLoginWrapper>
         <Label>

@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import { handleRegisterValidation } from "../../util/validityMethods";
 import {
   Error,
+  ImageWrap,
   Input,
   InputWrapper,
   Label,
   RegisterOrLoginWrapper,
+  StyledImage,
   StyledLink,
   SubmitButton,
   SwitchRegisterOrLoginWrapper,
@@ -31,6 +33,7 @@ const InitialFieldValues = {
 const RegisterPage = () => {
   const [errors, setErrors] = useState(InitialErrors);
   const [fields, setFields] = useState(InitialFieldValues);
+  const [isShow, setShow] = useState(false);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -86,11 +89,25 @@ const RegisterPage = () => {
           <InputWrapper>
             <Input
               placeholder="password"
-              type="password"
+              type={!isShow ? "password" : "text"}
               value={fields.password}
               name="password"
               onChange={handleChange}
             />
+            <ImageWrap
+              onClick={() => {
+                setShow(!isShow);
+              }}
+            >
+              <StyledImage
+                src={!isShow ? "/images/eye.svg" : "/images/eye-slash.svg"}
+                alt=""
+                layout="fixed"
+                width={30}
+                height={30}
+                style={{}}
+              />
+            </ImageWrap>
             {errors.password && <Error>{errors.password}</Error>}
           </InputWrapper>
           <SubmitButton type="button" onClick={handleSubmit}>
