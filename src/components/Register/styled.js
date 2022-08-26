@@ -65,8 +65,11 @@ export const StyledLink = styled.a`
 
 export const ImageWrap = styled.div`
   position: relative;
-  width: 10%;
-  top: -38px;
-  left: 274px;
+  width: 50px;
+  float: right;
+  top: -40px;
 `;
-export const StyledImage = styled(Image)``;
+export const StyledImage = styled(Image)`
+width:100%
+background-color:red
+`;

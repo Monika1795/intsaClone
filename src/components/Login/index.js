@@ -84,7 +84,6 @@ const LoginPage = () => {
               layout="fixed"
               width={30}
               height={30}
-              style={{}}
             />
           </ImageWrap>
 
